@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/js/rateit/scripts/rateit.css">
+</head>
+<body>
+<header>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+            <a href="/index" class="navbar-brand d-flex align-items-center">
+                <strong>ORMedia test</strong>
+            </a>
+            <form class="form-inline" action="#" th:action="@{/index}" th:object="${userForm}" method="post">
+                <div class="loginuser" <!--th:if="${user.name_users}-->">
+                    <div <!--th:text="${user.name_users}-->"></div>
+                </div>
+                <!--<div class="form-check mt-1 mr-sm-5">
+                    <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                    <label class="form-check-label " style="color: white" for="inlineFormCheck">Databace</label>
+                </div>-->
+                <input class="form-control mr-sm-2" type="text" id="inputLogin" placeholder="Login" th:field="*{name}"/>
+                <input type="text" class="form-control" id="inputPassword" placeholder="Password" th:field="*{pass}"/>
+                <button class="btn btn-dark" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</header>
+
+<main role="main">
+        <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-3" th:each="film: ${films}">
+                    <div class="card mb-4 shadow-sm">
+
+                        <img class="card-img-top" th:src="@{${film.getImg_films()}}" alt="" height="330px">
+                        <div class="card-body">
+                            <a style="color: black; text-decoration: none" href="watch.html"> <h5 style="text-align: center;" th:text="${film.getName_films()}"></h5></a>
+                            <div style="height: 30px;">
+                                <div class="rateit" style="float: left; padding-top: 2px"></div>
+                                <div class="year" style="float: right;" th:text="${film.getYear_films()}"></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="text-muted">
+    <div class="container">
+        <p></p>
+        <p>Test ORMedia May 2019</p>
+        <p>Powered by Aliaxandr Kruvasheyeu</p>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="/static/js/rateit/scripts/jquery.rateit.js"></script>
+<script src="/static/js/rateit/scripts/jquery.rateit.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+<script src="/static/js/js.js"></script>
+</body>
+
+</html>
