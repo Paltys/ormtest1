@@ -13,7 +13,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public User getByName(String login, String pass){
-        return userRepository.findByName_users(login);
+        return userRepository.findByName(login);
 
 
     }

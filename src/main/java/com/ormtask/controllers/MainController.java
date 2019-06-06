@@ -26,12 +26,13 @@ public class MainController {
 
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public ModelAndView getIndex(/*@RequestParam String inputLogin, @RequestParam String inputPassword*/){
+    public ModelAndView getIndex(){
         ModelAndView mav = new ModelAndView();
         if (true){
             List<Films> filmList = filmService.getAll();
             mav.addObject("films", filmList);
             mav.addObject("userForm", new UserForm()); //Добавил пустой объект
+            mav.addObject("user", new User()); //Добавил пустой объект
             mav.setViewName("index");
         }
 
@@ -41,19 +42,27 @@ public class MainController {
     @RequestMapping(value = "/index",method = RequestMethod.POST)
     public ModelAndView getUser(@ModelAttribute("userForm") UserForm userForm ){
         ModelAndView mav = new ModelAndView();
+
+        List<Films> filmList = filmService.getAll();
+        mav.addObject("films", filmList);
+
         String login = userForm.getName();
         String pass =  userForm.getPass();
-        User user=userService.getByName(login, pass);
-        System.out.println("POST");
+
+        System.out.println(userForm.getName()+" "+userForm.getPass());
+
+        User user = userService.getByName(login, pass);
         mav.addObject("user", user);
             if (user.getRole_users()==1){
                 mav.setViewName("admin");
-                System.out.println("admin");
+                System.out.println("admin tut");
                 return mav;
             }
-            mav.setViewName("index");
+        mav.setViewName("index");
+        System.out.println("ne admin");
 
-            return mav;
+        return mav;
+
     }
 
 

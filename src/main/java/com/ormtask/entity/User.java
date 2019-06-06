@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "users", schema = "ormtest1")
 public class User{
     private int id_users;
-    private String name_users;
+    private String name;
     private String pass_users;
     private int role_users;
 
@@ -25,12 +25,12 @@ public class User{
     }
 
     @Column(name = "name_users",nullable = false, unique = true, length = 45)
-    public String getName_users() {
-        return name_users;
+    public String getName() {
+        return name;
     }
 
-    public void setName_users(String name_users) {
-        this.name_users = name_users;
+    public void setName(String name_users) {
+        this.name = name_users;
     }
 
     @Column(name = "pass_users",nullable = false,  length = 45)
@@ -55,7 +55,7 @@ public class User{
     public String toString() {
         return "User{" +
                 "id_users=" + id_users +
-                ", name_users='" + name_users + '\'' +
+                ", name_users='" + name + '\'' +
                 ", pass_users='" + pass_users + '\'' +
                 ", role_users=" + role_users +
                 '}';
